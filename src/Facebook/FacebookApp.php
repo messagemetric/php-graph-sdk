@@ -91,6 +91,7 @@ class FacebookApp implements \Serializable
      *
      * @return string
      */
+    public function __serialize() { return serialize(); }
     public function serialize()
     {
         return implode('|', [$this->id, $this->secret]);
@@ -101,6 +102,7 @@ class FacebookApp implements \Serializable
      *
      * @param string $serialized
      */
+    public function __unserialize($serialized) { return unserialize($serialized); }
     public function unserialize($serialized)
     {
         list($id, $secret) = explode('|', $serialized);
